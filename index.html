@@ -1,235 +1,518 @@
-<!-- Generated with Claude -->
 
-<!doctype html>
+
+Portfolio new · HTML
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Business Analytics Portfolio</title>
-
-    <style>
-      /* ============================================================
-       BASIC STYLES — students can tweak colors/fonts here
-       ============================================================ */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Analytics Portfolio</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2d3436;
+      background: linear-gradient(135deg, #faf8f3 0%, #f5f3ff 100%);
+      line-height: 1.6;
+    }
+ 
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+      gap: 0;
+    }
+ 
+    /* ============ SIDEBAR ============ */
+    .sidebar {
+      width: 280px;
+      background: linear-gradient(180deg, #fff5f9 0%, #f5f3ff 100%);
+      padding: 40px 30px;
+      border-right: 2px solid #f0dce8;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+ 
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f0a8d8 0%, #a8d8a8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 20px rgba(240, 168, 216, 0.2);
+      border: 3px solid #f9e5b8;
+    }
+ 
+    .sidebar h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+ 
+    .sidebar-tagline {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+ 
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+ 
+    .sidebar-section h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #d67bb3;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+ 
+    .social-links {
+      list-style: none;
+    }
+ 
+    .social-links li {
+      margin-bottom: 10px;
+    }
+ 
+    .social-links a {
+      color: #2d3436;
+      text-decoration: none;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 6px 0;
+    }
+ 
+    .social-links a:hover {
+      color: #d67bb3;
+      transform: translateX(6px);
+    }
+ 
+    /* ============ MAIN CONTENT ============ */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    /* ---------- TOP NAVIGATION ---------- */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+ 
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+ 
+    .navbar h2 {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f9b4de 0%, #b2ebb2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+ 
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+ 
+    .nav-tabs button {
+      padding: 10px 24px;
+      border: 2px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      color: #666;
+    }
+ 
+    .nav-tabs button:hover {
+      border-color: #f0a8d8;
+      color: #2d3436;
+    }
+ 
+    .nav-tabs button.active {
+      background: linear-gradient(135deg, #f9b4de 0%, #b2ebb2 100%);
+      color: #fff;
+      border-color: transparent;
+    }
+ 
+    /* ---------- CONTENT AREA ---------- */
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 50px 40px;
+    }
+ 
+    .tab-content {
+      display: none;
+    }
+ 
+    .tab-content.active {
+      display: block;
+    }
+ 
+    /* ---------- ABOUT TAB ---------- */
+    .panel {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      line-height: 1.8;
+    }
+ 
+    .panel p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+ 
+    /* ---------- PORTFOLIO TAB (PROJECTS AS BLOGS) ---------- */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+ 
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      border-left: 4px solid #f0a8d8;
+    }
+ 
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(240, 168, 216, 0.2);
+    }
+ 
+    .card-photo {
+      background: linear-gradient(135deg, #f9e5b8 0%, #a8d8a8 50%, #f0a8d8 100%);
+      padding: 30px;
+      color: #fff;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+ 
+    .card-date {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+ 
+    .card-text h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+ 
+    .card-text {
+      padding: 30px;
+    }
+ 
+    .card-text p {
+      color: #666;
+      margin-bottom: 16px;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+ 
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+ 
+    .tag {
+      display: inline-block;
+      background: #f0dce8;
+      color: #d67bb3;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+ 
+    .tag.green {
+      background: #e0f0e0;
+      color: #6bb36b;
+    }
+ 
+    .tag.yellow {
+      background: #fef4d4;
+      color: #d4af37;
+    }
+ 
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
       }
-
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        color: #222;
-        background: #f7f7f7;
-        line-height: 1.5;
+ 
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 2px solid #f0dce8;
+        padding: 30px 20px;
       }
-
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 40px 20px;
+ 
+      .navbar-content {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
       }
-
-      /* ---------- HEADER (photo + name + subheading) ---------- */
-      header {
-        text-align: center;
-        margin-bottom: 30px;
+ 
+      .content {
+        padding: 30px 20px;
       }
-
-      /* Empty space for photo — replace with your own <img> if you like */
-      .photo {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: #ddd;
-        border: 2px dashed #aaa;
-        margin: 0 auto 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 13px;
-      }
-
-      header h1 {
-        font-size: 28px;
-        margin-bottom: 6px;
-      } /* NAME */
-      header p {
-        font-size: 16px;
-        color: #555;
-      } /* EXPERIENCES */
-
-      /* ---------- TABS ---------- */
-      .tabs {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 24px;
-      }
-
-      .tab-button {
-        padding: 10px 22px;
-        border: 1px solid #ccc;
-        background: #fff;
-        cursor: pointer;
-        font-size: 15px;
-        border-radius: 4px;
-      }
-
-      .tab-button.active {
-        background: #2c3e50;
-        color: #fff;
-        border-color: #2c3e50;
-      }
-
-      /* ---------- TAB CONTENT ---------- */
-      .tab-content {
-        display: none;
-      }
-      .tab-content.active {
-        display: block;
-      }
-
-      .panel {
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 6px;
-        padding: 24px;
-      }
-
-      /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-      }
-
-      .card {
-        border: 1px solid #eee;
-        border-radius: 6px;
-        overflow: hidden;
-        background: #fff;
-      }
-
-      /* Empty space for project photo */
-      .card-photo {
-        height: 120px;
-        background: #ddd;
-        border-bottom: 1px dashed #aaa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 12px;
-      }
-
-      .card-text {
-        padding: 14px;
-      }
-      .card-text h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-      }
-      .card-text p {
+ 
+      .nav-tabs button {
+        padding: 8px 16px;
         font-size: 14px;
-        color: #555;
       }
-
-      /* ---------- MOBILE: stack cards vertically ---------- */
-      @media (max-width: 640px) {
-        .cards {
-          grid-template-columns: 1fr;
-        }
+ 
+      .panel {
+        padding: 20px;
       }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- ============================================================
-         HEADER: photo, name, experiences
-         ============================================================ -->
-      <header>
-        <!-- Replace this div with <img src="your-photo.jpg" class="photo"> -->
-        <div class="photo">Photo</div>
-
-        <h1>Your Name</h1>
-        <p>Business Analyst · SQL · Python · Tableau</p>
-      </header>
-
-      <!-- ============================================================
-         TABS
-         ============================================================ -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="showTab('about')">
-          About Me
-        </button>
-        <button class="tab-button" onclick="showTab('projects')">
-          Projects
-        </button>
-      </div>
-
-      <!-- ---------- TAB 1: ABOUT ME ---------- -->
-      <div id="about" class="tab-content active">
-        <div class="panel">
-          <p>
-            Write a short introduction about yourself here — your background,
-            skills, and what kind of business analytics role you're looking for.
-          </p>
+ 
+      .card-photo {
+        padding: 20px;
+        min-height: 100px;
+      }
+ 
+      .card-text {
+        padding: 20px;
+      }
+ 
+      .card-text h3 {
+        font-size: 20px;
+      }
+    }
+ 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+ 
+    ::-webkit-scrollbar-track {
+      background: #f5f3ff;
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+      background: #f0a8d8;
+      border-radius: 4px;
+    }
+ 
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d67bb3;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div class="wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="photo">
+        <div class="photo">
+          <img src="IMG_1773.jpg" alt="Profile Photo" class="photo">
         </div>
+      <h1>Matawatee Suriyapanuwat (Nat)</h1>
+      <p class="sidebar-tagline">Business Analyst · Python · C++ · SQL · Tableau</p>
+ 
+      <div class="sidebar-section">
+        <h3>Contact</h3>
+        <ul class="social-links">
+          <li><a href="mailto:nat.nnts@gmil.com">Email</a></li>
+        </ul>
       </div>
-
-      <!-- ---------- TAB 2: PROJECTS ---------- -->
-      <div id="projects" class="tab-content">
-        <div class="cards">
-          <!-- CARD 1 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+ 
+      <div class="sidebar-section">
+        <h3>Social</h3>
+        <ul class="social-links">
+          <li><a href="https://github.com/ntnatts/ntnatts" target="_blank">GitHub</a></li>
+          <li><a href="linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </aside>
+ 
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <!-- TOP NAVIGATION -->
+      <nav class="navbar">
+        <div class="navbar-content">
+          <h2>Portfolio</h2>
+          <ul class="nav-tabs">
+            <li><button class="tab-button active" onclick="showTab('portfolio')">Portfolio</button></li>
+            <li><button class="tab-button" onclick="showTab('about')">About Me</button></li>
+            <li><button class="tab-button" onclick="showTab('projects')">CV</button></li>
+          </ul>
+        </div>
+      </nav>
+ 
+      <!-- CONTENT -->
+      <div class="content">
+        <!-- PORTFOLIO TAB -->
+        <div id="portfolio" class="tab-content active">
+          <div class="cards">
+            <!-- PROJECT 1 -->
+            <div class="card">
+              <div class="card-photo">
+                <div class="card-date">March 2024</div>
+                <div class="card-text" style="padding: 0;">
+                  <h3 style="margin: 0; font-size: 22px;">Sales Data Analysis</h3>
+                </div>
+              </div>
+              <div class="card-text">
+                <p>
+                  Analyzed quarterly sales data across 5 regions to identify trends and opportunities.
+                  Created interactive dashboards in Tableau to track KPIs and revenue growth.
+                </p>
+                <p>
+                  <strong>Key findings:</strong> Discovered a 23% increase in sales in Q2, with the 
+                  best performance in the West region. Recommended targeted marketing strategies.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">Tableau</span>
+                  <span class="tag green">SQL</span>
+                  <span class="tag yellow">Excel</span>
+                </div>
+              </div>
+            </div>
+ 
+            <!-- PROJECT 2 -->
+            <div class="card">
+              <div class="card-photo">
+                <div class="card-date">February 2024</div>
+                <div class="card-text" style="padding: 0;">
+                  <h3 style="margin: 0; font-size: 22px;">Customer Segmentation Study</h3>
+                </div>
+              </div>
+              <div class="card-text">
+                <p>
+                  Performed clustering analysis on customer data using Python to segment users 
+                  into distinct groups based on purchasing behavior and demographics.
+                </p>
+                <p>
+                  <strong>Outcome:</strong> Identified 4 customer segments with actionable insights. 
+                  Results enabled personalized marketing campaigns that increased retention by 18%.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag green">Machine Learning</span>
+                  <span class="tag yellow">Pandas</span>
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- CARD 2 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
-            </div>
+        </div>
+ 
+        <!-- ABOUT ME TAB -->
+        <div id="about" class="tab-content">
+          <div class="panel">
+            <p>
+              Hi! I'm a data analyst passionate about transforming raw data into actionable insights. 
+              I specialize in SQL, Python, and Tableau, with a focus on business intelligence and 
+              strategic decision-making.
+            </p>
+            <p>
+              With experience in sales analytics, customer behavior analysis, and data visualization, 
+              I love helping teams understand their data and make informed decisions. I'm a lifelong 
+              learner who enjoys exploring new tools and methodologies in the data world.
+            </p>
+            <p>
+              When I'm not analyzing data, you can find me reading about emerging analytics trends, 
+              contributing to open-source projects, or working on personal data projects.
+            </p>
           </div>
-
-          <!-- CARD 3 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+        </div>
+ 
+        <!-- CV/PROJECTS TAB -->
+        <div id="projects" class="tab-content">
+          <div class="panel">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #d67bb3;">Experience & Education</h3>
+ 
+            <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #f0dce8;">
+              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Data Analyst</h4>
+              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">Company Name · Jan 2023 – Present</p>
+              <p>Led data analysis projects for sales and marketing teams. Created dashboards in Tableau 
+              that track KPIs. Performed SQL queries to extract and transform data from databases.</p>
+            </div>
+ 
+            <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #f0dce8;">
+              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Junior Analyst</h4>
+              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">Previous Company · Jun 2022 – Dec 2022</p>
+              <p>Supported analytics initiatives by creating reports and visualizations. Collaborated with 
+              cross-functional teams to define data requirements and solutions.</p>
+            </div>
+ 
+            <div>
+              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Bachelor of Science in Business Analytics</h4>
+              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">University Name · Graduated May 2022</p>
+              <p>Relevant coursework: Data Analysis, Business Intelligence, Statistical Modeling, 
+              Database Management. GPA: 3.8/4.0</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- ============================================================
-       SIMPLE TAB SWITCHING SCRIPT
-       ============================================================ -->
-    <script>
-      function showTab(id) {
-        // hide all tab contents
-        document.querySelectorAll(".tab-content").forEach(function (el) {
-          el.classList.remove("active");
-        });
-        // remove active state from all buttons
-        document.querySelectorAll(".tab-button").forEach(function (btn) {
-          btn.classList.remove("active");
-        });
-        // show the selected tab + highlight the clicked button
-        document.getElementById(id).classList.add("active");
-        event.target.classList.add("active");
-      }
-    </script>
-  </body>
+  </div>
+ 
+  <script>
+    function showTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll(".tab-content").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      // Remove active state from all buttons
+      document.querySelectorAll(".tab-button").forEach(function (btn) {
+        btn.classList.remove("active");
+      });
+      // Show selected tab
+      document.getElementById(tabName).classList.add("active");
+      event.target.classList.add("active");
+    }
+  </script>
+</body>
 </html>
+ 
