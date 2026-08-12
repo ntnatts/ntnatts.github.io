@@ -1,6 +1,3 @@
-
-
-Portfolio new · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +13,9 @@ Portfolio new · HTML
     }
  
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       color: #2d3436;
-      background: linear-gradient(135deg, #faf8f3 0%, #f5f3ff 100%);
+      background: #faf9f7;
       line-height: 1.6;
     }
  
@@ -31,55 +28,64 @@ Portfolio new · HTML
     /* ============ SIDEBAR ============ */
     .sidebar {
       width: 280px;
-      background: linear-gradient(180deg, #fff5f9 0%, #f5f3ff 100%);
+      background: #fce9f3;
       padding: 40px 30px;
-      border-right: 2px solid #f0dce8;
+      border-right: 1px solid #f5d5e8;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
+      color: #2d3436;
     }
  
     .photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f0a8d8 0%, #a8d8a8 100%);
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: #2d3436;
       font-size: 14px;
-      margin: 0 auto 20px;
-      box-shadow: 0 4px 20px rgba(240, 168, 216, 0.2);
-      border: 3px solid #f9e5b8;
+      margin: 0 auto 24px;
+      border: 2px solid #f5d5e8;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
  
     .sidebar h1 {
-      font-size: 24px;
+      font-size: 22px;
       text-align: center;
-      margin-bottom: 8px;
-      font-weight: 700;
+      margin-bottom: 6px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2d3436;
     }
  
     .sidebar-tagline {
-      font-size: 14px;
-      color: #888;
+      font-size: 13px;
+      color: #a87ba8;
       text-align: center;
-      font-style: italic;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
+      line-height: 1.5;
     }
  
     .sidebar-section {
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
  
     .sidebar-section h3 {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #d67bb3;
-      margin-bottom: 12px;
+      letter-spacing: 1.2px;
+      color: #d084b0;
+      margin-bottom: 14px;
       font-weight: 600;
     }
  
@@ -94,15 +100,15 @@ Portfolio new · HTML
     .social-links a {
       color: #2d3436;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 14px;
       transition: all 0.3s ease;
       display: inline-block;
       padding: 6px 0;
     }
  
     .social-links a:hover {
-      color: #d67bb3;
-      transform: translateX(6px);
+      color: #d084b0;
+      transform: translateX(4px);
     }
  
     /* ============ MAIN CONTENT ============ */
@@ -115,14 +121,14 @@ Portfolio new · HTML
     /* ---------- TOP NAVIGATION ---------- */
     .navbar {
       background: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid #e9ecef;
       position: sticky;
       top: 0;
       z-index: 100;
     }
  
     .navbar-content {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 40px;
       display: flex;
@@ -132,11 +138,10 @@ Portfolio new · HTML
     }
  
     .navbar h2 {
-      font-size: 20px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #f9b4de 0%, #b2ebb2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 18px;
+      font-weight: 600;
+      color: #a87ba8;
+      letter-spacing: -0.5px;
     }
  
     .nav-tabs {
@@ -146,26 +151,25 @@ Portfolio new · HTML
     }
  
     .nav-tabs button {
-      padding: 10px 24px;
-      border: 2px solid transparent;
+      padding: 10px 20px;
+      border: 1px solid transparent;
       background: transparent;
       cursor: pointer;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      border-radius: 20px;
+      border-radius: 6px;
       transition: all 0.3s ease;
-      color: #666;
+      color: #555;
     }
  
     .nav-tabs button:hover {
-      border-color: #f0a8d8;
+      background: #fce9f3;
       color: #2d3436;
     }
  
     .nav-tabs button.active {
-      background: linear-gradient(135deg, #f9b4de 0%, #b2ebb2 100%);
+      background: #d084b0;
       color: #fff;
-      border-color: transparent;
     }
  
     /* ---------- CONTENT AREA ---------- */
@@ -189,58 +193,58 @@ Portfolio new · HTML
     .panel {
       background: #fff;
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
       line-height: 1.8;
     }
  
     .panel p {
-      font-size: 16px;
+      font-size: 15px;
       color: #555;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
  
-    /* ---------- PORTFOLIO TAB (PROJECTS AS BLOGS) ---------- */
+    /* ---------- PORTFOLIO TAB (PROJECTS AS CARDS) ---------- */
     .cards {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 28px;
     }
  
     .card {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e9ecef;
       transition: all 0.3s ease;
-      border-left: 4px solid #f0a8d8;
     }
  
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 28px rgba(240, 168, 216, 0.2);
+      border-color: #d084b0;
+      box-shadow: 0 8px 24px rgba(208, 132, 176, 0.15);
     }
  
     .card-photo {
-      background: linear-gradient(135deg, #f9e5b8 0%, #a8d8a8 50%, #f0a8d8 100%);
-      padding: 30px;
-      color: #fff;
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      background: #fce9f3;
+      padding: 28px 30px;
+      color: #2d3436;
+      border-bottom: 1px solid #f5d5e8;
     }
  
     .card-date {
-      font-size: 13px;
-      opacity: 0.9;
+      font-size: 12px;
+      color: #a87ba8;
       margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
  
     .card-text h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
-      font-weight: 700;
+      font-size: 22px;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2d3436;
     }
  
     .card-text {
@@ -248,10 +252,10 @@ Portfolio new · HTML
     }
  
     .card-text p {
-      color: #666;
+      color: #555;
       margin-bottom: 16px;
       line-height: 1.7;
-      font-size: 15px;
+      font-size: 14px;
     }
  
     .card-tags {
@@ -263,22 +267,54 @@ Portfolio new · HTML
  
     .tag {
       display: inline-block;
-      background: #f0dce8;
-      color: #d67bb3;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
+      background: #fce9f3;
+      color: #b8568a;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
       font-weight: 500;
     }
  
-    .tag.green {
-      background: #e0f0e0;
-      color: #6bb36b;
+    .tag.accent {
+      background: #f5d5e8;
+      color: #a87ba8;
     }
  
-    .tag.yellow {
-      background: #fef4d4;
-      color: #d4af37;
+    .tag.muted {
+      background: #f0e8ec;
+      color: #8a7a8a;
+    }
+ 
+    /* ---------- CV TAB ---------- */
+    .cv-section {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e9ecef;
+    }
+ 
+    .cv-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+ 
+    .cv-section h4 {
+      font-size: 16px;
+      color: #a87ba8;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+ 
+    .cv-section .meta {
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+ 
+    .cv-section p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
     }
  
     /* ---------- RESPONSIVE ---------- */
@@ -292,7 +328,7 @@ Portfolio new · HTML
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 2px solid #f0dce8;
+        border-bottom: 1px solid #f5d5e8;
         padding: 30px 20px;
       }
  
@@ -309,16 +345,15 @@ Portfolio new · HTML
  
       .nav-tabs button {
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: 13px;
       }
  
       .panel {
-        padding: 20px;
+        padding: 24px;
       }
  
       .card-photo {
         padding: 20px;
-        min-height: 100px;
       }
  
       .card-text {
@@ -326,7 +361,7 @@ Portfolio new · HTML
       }
  
       .card-text h3 {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
  
@@ -335,16 +370,16 @@ Portfolio new · HTML
     }
  
     ::-webkit-scrollbar-track {
-      background: #f5f3ff;
+      background: #faf9f7;
     }
  
     ::-webkit-scrollbar-thumb {
-      background: #f0a8d8;
+      background: #f5d5e8;
       border-radius: 4px;
     }
  
     ::-webkit-scrollbar-thumb:hover {
-      background: #d67bb3;
+      background: #d084b0;
     }
   </style>
 </head>
@@ -354,16 +389,15 @@ Portfolio new · HTML
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="photo">
-        <div class="photo">
-          <img src="IMG_1773.jpg" alt="Profile Photo" class="photo">
-        </div>
-      <h1>Matawatee Suriyapanuwat (Nat)</h1>
-      <p class="sidebar-tagline">Business Analyst · Python · C++ · SQL · Tableau</p>
+        <img src="IMG_1773.jpg" alt="Profile Photo">
+      </div>
+      <h1>Matawatee Suriyapanuwat</h1>
+      <p class="sidebar-tagline">Business Analyst<br>Python · SQL · Tableau</p>
  
       <div class="sidebar-section">
         <h3>Contact</h3>
         <ul class="social-links">
-          <li><a href="mailto:nat.nnts@gmil.com">Email</a></li>
+          <li><a href="mailto:nat.nnts@gmail.com">Email</a></li>
         </ul>
       </div>
  
@@ -371,7 +405,7 @@ Portfolio new · HTML
         <h3>Social</h3>
         <ul class="social-links">
           <li><a href="https://github.com/ntnatts/ntnatts" target="_blank">GitHub</a></li>
-          <li><a href="linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
+          <li><a href="https://linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
         </ul>
       </div>
     </aside>
@@ -383,8 +417,8 @@ Portfolio new · HTML
         <div class="navbar-content">
           <h2>Portfolio</h2>
           <ul class="nav-tabs">
-            <li><button class="tab-button active" onclick="showTab('portfolio')">Portfolio</button></li>
-            <li><button class="tab-button" onclick="showTab('about')">About Me</button></li>
+            <li><button class="tab-button active" onclick="showTab('portfolio')">Projects</button></li>
+            <li><button class="tab-button" onclick="showTab('about')">About</button></li>
             <li><button class="tab-button" onclick="showTab('projects')">CV</button></li>
           </ul>
         </div>
@@ -400,7 +434,7 @@ Portfolio new · HTML
               <div class="card-photo">
                 <div class="card-date">March 2024</div>
                 <div class="card-text" style="padding: 0;">
-                  <h3 style="margin: 0; font-size: 22px;">Sales Data Analysis</h3>
+                  <h3>Sales Data Analysis</h3>
                 </div>
               </div>
               <div class="card-text">
@@ -413,9 +447,9 @@ Portfolio new · HTML
                   best performance in the West region. Recommended targeted marketing strategies.
                 </p>
                 <div class="card-tags">
-                  <span class="tag">Tableau</span>
-                  <span class="tag green">SQL</span>
-                  <span class="tag yellow">Excel</span>
+                  <span class="tag accent">Tableau</span>
+                  <span class="tag">SQL</span>
+                  <span class="tag muted">Excel</span>
                 </div>
               </div>
             </div>
@@ -425,7 +459,7 @@ Portfolio new · HTML
               <div class="card-photo">
                 <div class="card-date">February 2024</div>
                 <div class="card-text" style="padding: 0;">
-                  <h3 style="margin: 0; font-size: 22px;">Customer Segmentation Study</h3>
+                  <h3>Customer Segmentation Study</h3>
                 </div>
               </div>
               <div class="card-text">
@@ -438,9 +472,9 @@ Portfolio new · HTML
                   Results enabled personalized marketing campaigns that increased retention by 18%.
                 </p>
                 <div class="card-tags">
-                  <span class="tag">Python</span>
-                  <span class="tag green">Machine Learning</span>
-                  <span class="tag yellow">Pandas</span>
+                  <span class="tag accent">Python</span>
+                  <span class="tag">Machine Learning</span>
+                  <span class="tag muted">Pandas</span>
                 </div>
               </div>
             </div>
@@ -470,25 +504,25 @@ Portfolio new · HTML
         <!-- CV/PROJECTS TAB -->
         <div id="projects" class="tab-content">
           <div class="panel">
-            <h3 style="font-size: 24px; margin-bottom: 20px; color: #d67bb3;">Experience & Education</h3>
+            <h3 style="font-size: 20px; margin-bottom: 28px; color: #a87ba8; font-weight: 600;">Experience & Education</h3>
  
-            <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #f0dce8;">
-              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Data Analyst</h4>
-              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">Company Name · Jan 2023 – Present</p>
+            <div class="cv-section">
+              <h4>Data Analyst</h4>
+              <p class="meta">Company Name · Jan 2023 – Present</p>
               <p>Led data analysis projects for sales and marketing teams. Created dashboards in Tableau 
               that track KPIs. Performed SQL queries to extract and transform data from databases.</p>
             </div>
  
-            <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #f0dce8;">
-              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Junior Analyst</h4>
-              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">Previous Company · Jun 2022 – Dec 2022</p>
+            <div class="cv-section">
+              <h4>Junior Analyst</h4>
+              <p class="meta">Previous Company · Jun 2022 – Dec 2022</p>
               <p>Supported analytics initiatives by creating reports and visualizations. Collaborated with 
               cross-functional teams to define data requirements and solutions.</p>
             </div>
  
-            <div>
-              <h4 style="font-size: 18px; color: #d67bb3; margin-bottom: 4px;">Bachelor of Science in Business Analytics</h4>
-              <p style="font-size: 14px; color: #888; font-style: italic; margin-bottom: 10px;">University Name · Graduated May 2022</p>
+            <div class="cv-section">
+              <h4>Bachelor of Science in Business Analytics</h4>
+              <p class="meta">University Name · Graduated May 2022</p>
               <p>Relevant coursework: Data Analysis, Business Intelligence, Statistical Modeling, 
               Database Management. GPA: 3.8/4.0</p>
             </div>
@@ -515,4 +549,3 @@ Portfolio new · HTML
   </script>
 </body>
 </html>
- 
