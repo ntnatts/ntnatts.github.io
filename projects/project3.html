@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biomechanics Simulation - Matawatee Suriyapanuwat</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d3436;
+      background: #faf9f7;
+      line-height: 1.6;
+    }
+ 
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+      gap: 0;
+    }
+ 
+    /* ============ SIDEBAR ============ */
+    .sidebar {
+      width: 280px;
+      background: #e8f5e9;
+      padding: 40px 30px;
+      border-right: 1px solid #c8e6c9;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      color: #2d3436;
+    }
+ 
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2d3436;
+      font-size: 14px;
+      margin: 0 auto 24px;
+      border: 2px solid #558b2f;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .sidebar h1 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 6px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2d3436;
+    }
+ 
+    .sidebar-tagline {
+      font-size: 13px;
+      color: #558b2f;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+ 
+    .sidebar-section {
+      margin-bottom: 32px;
+    }
+ 
+    .sidebar-section h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #558b2f;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+ 
+    .social-links {
+      list-style: none;
+    }
+ 
+    .social-links li {
+      margin-bottom: 10px;
+    }
+ 
+    .social-links a {
+      color: #2d3436;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 6px 0;
+    }
+ 
+    .social-links a:hover {
+      color: #558b2f;
+      transform: translateX(4px);
+    }
+ 
+    /* ============ MAIN CONTENT ============ */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    /* ---------- TOP NAVIGATION ---------- */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+ 
+    .navbar-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+ 
+    .navbar h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d5016;
+      letter-spacing: -0.5px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #558b2f;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+ 
+    /* ---------- CONTENT AREA ---------- */
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 50px 40px;
+    }
+
+    .project-header {
+      margin-bottom: 40px;
+    }
+
+    .project-title {
+      font-size: 32px;
+      color: #2d3436;
+      margin-bottom: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .project-meta {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .project-topics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f1f8f4;
+      color: #2d5016;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .project-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+
+    .content-section {
+      margin-bottom: 40px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section h3 {
+      font-size: 24px;
+      color: #558b2f;
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 3px solid #e8f5e9;
+      padding-bottom: 12px;
+    }
+
+    .content-section p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .content-section ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .content-section li {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .highlight-box {
+      background: #f1f8f4;
+      border-left: 4px solid #558b2f;
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .highlight-box strong {
+      color: #2d5016;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+ 
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #c8e6c9;
+        padding: 30px 20px;
+      }
+ 
+      .navbar-content {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+      }
+ 
+      .content {
+        padding: 30px 20px;
+      }
+
+      .project-title {
+        font-size: 24px;
+      }
+
+      .project-content {
+        padding: 24px;
+      }
+    }
+ 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+ 
+    ::-webkit-scrollbar-track {
+      background: #f1f8f4;
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+      background: #c8e6c9;
+      border-radius: 4px;
+    }
+ 
+    ::-webkit-scrollbar-thumb:hover {
+      background: #558b2f;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div class="wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="photo">
+        <img src="../img/IMG_1773.jpg" alt="Profile Photo">
+      </div>
+      <h1>Matawatee Suriyapanuwat</h1>
+      <p class="sidebar-tagline">Business Analyst<br>Python · SQL · Tableau</p>
+ 
+      <div class="sidebar-section">
+        <h3>Contact</h3>
+        <ul class="social-links">
+          <li><a href="mailto:nat.nnts@gmail.com">Email</a></li>
+        </ul>
+      </div>
+ 
+      <div class="sidebar-section">
+        <h3>Social</h3>
+        <ul class="social-links">
+          <li><a href="https://github.com/ntnatts/ntnatts" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </aside>
+ 
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <!-- TOP NAVIGATION -->
+      <nav class="navbar">
+        <div class="navbar-content">
+          <a href="../index.html" class="back-link">← Back to Projects</a>
+          <h2>Portfolio</h2>
+        </div>
+      </nav>
+ 
+      <!-- CONTENT -->
+      <div class="content">
+        <div class="project-header">
+          <h1 class="project-title">Biomechanics Simulation of Orthodontic Force: Standard vs. Low-Quality Wire</h1>
+          <div class="project-meta">April 2024 | EGBI 261 Biomechanics II</div>
+          <div class="project-topics">
+            <span class="tag">Biomedical Engineering</span>
+            <span class="tag">FEA Simulation</span>
+            <span class="tag">Materials Science</span>
+            <span class="tag">Healthcare</span>
+          </div>
+        </div>
+
+        <div class="project-content">
+
+          <!-- PROBLEM SECTION -->
+          <div class="content-section">
+            <h3>Problem</h3>
+            <p>Orthodontic treatment relies heavily on wire quality to achieve predictable tooth movement and patient safety. However, low-quality orthodontic wires are prevalent in markets, especially in regions with limited regulation. The critical issue is that <strong>the biomechanical properties of low-quality wires differ significantly from standard-quality wires</strong>, leading to:</p>
+            <ul>
+              <li><strong>Unpredictable force delivery:</strong> Low-quality wires produce inconsistent stress distributions, compromising treatment outcomes</li>
+              <li><strong>Material degradation:</strong> Poor-quality wires show greater susceptibility to force decay over time</li>
+              <li><strong>Patient safety risks:</strong> Substandard materials may release harmful heavy metals and lack protective oxide coatings</li>
+              <li><strong>Clinical complications:</strong> Insufficient force control and material risks, including poisoning or adverse reactions</li>
+              <li><strong>Hygiene concerns:</strong> Low-quality wires lack proper surface protection, promoting bacterial adhesion</li>
+
+
+            <!------->
+
+
+            
+            </ul>
+            <div class="highlight-box">
+              <strong>Core Question:</strong> How do the biomechanical characteristics of standard-quality and low-quality orthodontic wires differ, and what are the clinical implications for orthodontic treatment?
+            </div>
+          </div>
+
+          <!-- OBJECTIVE SECTION -->
+          <div class="content-section">
+            <h3>Objective</h3>
+            <p>To compare the material properties and biomechanical performance between low-grade and standard-grade orthodontic wires using both experimental testing and finite element analysis.</p>
+            <p>Specific goals included:</p>
+            <ul>
+              <li>Conduct tensile testing on standard and low-quality nitinol wires to measure stress-strain characteristics</li>
+              <li>Quantify differences in modulus values, stiffness, and elasticity between wire types</li>
+              <li>Perform FEA simulations to model stress distributions in dental structures under orthodontic force</li>
+              <li>Compare force transmission patterns and tooth displacement between wire types</li>
+              <li>Provide evidence-based clinical recommendations for wire selection</li>
+            </ul>
+          </div>
+
+          <!-- METHODS SECTION -->
+          <div class="content-section">
+            <h3>Methods</h3>
+            <p><strong>1. Experimental Testing (Material Characterization)</strong></p>
+            <ul>
+              <li>Obtained samples of standard-quality nitinol wire and low-quality orthodontic wire (fashion-grade)</li>
+              <li>Performed tensile testing on three samples of each wire type</li>
+              <li>Measured stress-strain relationships and calculated Young's modulus for each sample</li>
+              <li>Analyzed results statistically to determine significant differences</li>
+            </ul>
+
+            <p><strong>2. Finite Element Analysis (FEA) Simulation</strong></p>
+            <ul>
+              <li><strong>Geometry Creation:</strong> Built detailed 3D CAD models of maxillary dental arch including teeth, gum, and periodontal ligament</li>
+              <li><strong>Material Properties:</strong> Defined material parameters based on experimental test data for both wire types</li>
+              <li>
+                <strong>Model Compartments:</strong> Segmented the model into:
+                <ul>
+                  <li>Individual tooth brackets (Central Incisor, Lateral Incisor, Premolar, Molar)</li>
+                  <li>Gum tissue and bone structures</li>
+                  <li>Orthodontic wires and brackets</li>
+
+                  <div style="margin: 24px 0; text-align: center;">
+                    <img src="../img/teeth_model.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+                    <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+                  </div>
+                  <div style="margin: 24px 0; text-align: center;">
+                    <img src="../img/brackets_model.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+                    <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+                  </div>
+                  <div style="margin: 24px 0; text-align: center;">
+                    <img src="../img/teeth_assem.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+                  <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+                  </div>
+                </ul>
+              </li>
+              <li><strong>FEA Setup in Ansys Workbench:</strong>
+
+                <div style="margin: 24px 0; text-align: center;">
+                    <img src="../img/FEA_prep.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+                    <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+                </div>
+
+                <ul>
+                  <li>Defined boundary conditions (fixed supports at bone anchors)</li>
+                  <li>Applied horizontal forces to simulate wire-induced tooth movement</li>
+                  <li>Configured mesh with appropriate refinement for accurate stress distribution</li>
+                </ul>
+              </li>
+              <li><strong>Simulation Scenarios:</strong> Ran multiple analyses comparing force transmission and material deformation between standard and low-quality wires</li>
+              <li><strong>Results Analysis:</strong> Extracted stress, strain, and displacement data; generated color-coded visualizations showing stress hotspots</li>
+            </ul>
+
+            <p><strong>3. Tools & Technologies</strong></p>
+            <ul>
+              <li>Ansys Workbench 2024 (FEA software)</li>
+              <li>CAD modeling software for geometry creation</li>
+            </ul>
+          </div>
+
+          <!-- RESULTS SECTION -->
+          <div class="content-section">
+            <h3>Results</h3>
+            <p><strong>Experimental Findings (Stress-Strain Testing)</strong></p>
+
+
+            <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/stress-strain_curve.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+            </div>
+            <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/strain_modulus.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+            </div>
+
+            <ul>
+              <li><strong>Standard Wire:</strong> Mean Young's modulus = 9.3889 GPa with consistent properties across samples</li>
+              <li><strong>Low-Quality Wire:</strong> Mean Young's modulus = 13.1785 GPa, showing significantly higher stiffness but greater variability</li>
+              <li><strong>Strain at Break:</strong> Standard wire exhibited greater elasticity (0.08 mm/mm) compared to low-quality wire (0.056 mm/mm), indicating less flexibility</li>
+              <li><strong>Key Finding:</strong> Low-quality wires are stiffer and more brittle, lacking the controlled deflection behavior needed for safe tooth movement</li>
+            </ul>
+
+            <p><strong>FEA Simulation Results</strong></p>
+
+            <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/sim_bracket.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+            </div>
+
+            <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/teeth_sim_low.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+            </div>
+
+            <ul>
+              <li><strong>Force Distribution:</strong> Standard wires demonstrated uniform stress distribution across the dental arch; low-quality wires showed concentrated stress hotspots</li>
+              <li><strong>Material Deformation:</strong>
+                <ul>
+                  <li>Standard wire: Mean deformation = 0.03576 mm</li>
+                  <li>Low-quality wire: Mean deformation = 0.0011164 mm (significantly lower, indicating rigid behavior)</li>
+                </ul>
+              </li>
+              <li><strong>Stress Concentration:</strong> Low-quality wires exhibited stress concentration factors up to 3x higher than standard wires, creating risk zones in tooth structures</li>
+              <li><strong>Biological Implications:</strong> Uneven force distribution can lead to:
+                <ul>
+                  <li>Insufficient control of tooth movement</li>
+                  <li>Increased risk of root resorption</li>
+                  <li>Potential for tissue damage in high-stress areas</li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="highlight-box">
+              <strong>Critical Outcome:</strong> Standard-quality wires provide more predictable, uniform force transmission essential for safe and effective orthodontic treatment. Low-quality wires' unpredictable behavior and stress concentration pose significant clinical risks.
+            </div>
+          </div>
+
+          <!-- LEARNINGS SECTION -->
+          <div class="content-section">
+            <h3>What I Learned</h3>
+            
+            <p><strong>Technical & Professional Growth</strong></p>
+            <p>This project was my first real introduction to professional engineering tools. Learning CAD modeling and FEA through Ansys Workbench showed me how to translate real-world problems into computational form. But more importantly, I learned that technical tools are only powerful when connected to solving actual problems. I discovered how to bridge engineering outcomes with real-world impact—using simulation data and experimental evidence to justify decisions and support clinical recommendations. This project taught me why material testing isn't just an academic exercise; it's the foundation for confident, evidence-based engineering.</p>
+ 
+            <p><strong>Understanding Quality & Evidence</strong></p>
+            <p>Through this comparison of standard and low-quality wires, I truly grasped why quality matters. It's not about cost or preference—it's about measurable, quantifiable differences in performance and safety. I learned that material quality directly impacts outcomes, and that rigorous testing provides the evidence needed to defend that difference. This shift from seeing quality as "nice to have" to understanding it as essential is something I'll carry forward in every project.</p>
+ 
+            <p><strong>Collaboration & Project Management</strong></p>
+            <p>As a Year 2 semester group project, this taught me practical skills beyond engineering. Working with teammates, I learned how to divide responsibilities, coordinate different aspects of the work, and keep everyone aligned toward a deadline. I discovered how to problem-solve collaboratively—when one person hit a roadblock with CAD geometry or mesh refinement, others could troubleshoot or offer perspective. Managing a complex project with experimental testing, simulation work, and analysis across a semester showed me I can handle multi-threaded work and deliver quality results within constraints. These collaboration and time management skills are just as valuable as the technical knowledge I gained.</p>
+
+            <div class="highlight-box">
+              This project reinforced that engineering is ultimately about solving real problems and improving lives. The rigor of finite element analysis, combined with careful experimental validation, creates a powerful foundation for confident clinical recommendations. It's a reminder that attention to detail in material science has profound downstream effects on patient outcomes.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

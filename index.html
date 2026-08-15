@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Analytics Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.25" />
+  <title>Matawatee Suriyapanuwat - Portfolio</title>
   
   <style>
     * {
@@ -28,9 +28,9 @@
     /* ============ SIDEBAR ============ */
     .sidebar {
       width: 280px;
-      background: #fce9f3;
+      background: #e8f5e9;
       padding: 40px 30px;
-      border-right: 1px solid #f5d5e8;
+      border-right: 1px solid #c8e6c9;
       position: sticky;
       top: 0;
       height: 100vh;
@@ -41,7 +41,7 @@
     .photo {
       width: 120px;
       height: 120px;
-      border-radius: 8px;
+      border-radius: 50%;
       background: #fff;
       display: flex;
       align-items: center;
@@ -49,7 +49,7 @@
       color: #2d3436;
       font-size: 14px;
       margin: 0 auto 24px;
-      border: 2px solid #f5d5e8;
+      border: 2px solid #558b2f;
       overflow: hidden;
     }
 
@@ -70,7 +70,7 @@
  
     .sidebar-tagline {
       font-size: 13px;
-      color: #a87ba8;
+      color: #558b2f;
       text-align: center;
       margin-bottom: 32px;
       line-height: 1.5;
@@ -84,7 +84,7 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: #d084b0;
+      color: #558b2f;
       margin-bottom: 14px;
       font-weight: 600;
     }
@@ -107,7 +107,7 @@
     }
  
     .social-links a:hover {
-      color: #d084b0;
+      color: #558b2f;
       transform: translateX(4px);
     }
  
@@ -140,7 +140,7 @@
     .navbar h2 {
       font-size: 18px;
       font-weight: 600;
-      color: #a87ba8;
+      color: #2d5016;
       letter-spacing: -0.5px;
     }
  
@@ -163,12 +163,12 @@
     }
  
     .nav-tabs button:hover {
-      background: #fce9f3;
+      background: #f1f8f4;
       color: #2d3436;
     }
  
     .nav-tabs button.active {
-      background: #d084b0;
+      background: #558b2f;
       color: #fff;
     }
  
@@ -204,87 +204,132 @@
       margin-bottom: 18px;
     }
  
-    /* ---------- PORTFOLIO TAB (PROJECTS AS CARDS) ---------- */
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
+    /* ---------- PROJECTS SECTION ---------- */
+    .projects-header {
+      margin-bottom: 32px;
     }
- 
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #e9ecef;
-      transition: all 0.3s ease;
+
+    .projects-controls {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      align-items: flex-start;
     }
- 
-    .card:hover {
-      border-color: #d084b0;
-      box-shadow: 0 8px 24px rgba(208, 132, 176, 0.15);
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
- 
-    .card-photo {
-      background: #fce9f3;
-      padding: 28px 30px;
-      color: #2d3436;
-      border-bottom: 1px solid #f5d5e8;
-    }
- 
-    .card-date {
-      font-size: 12px;
-      color: #a87ba8;
-      margin-bottom: 8px;
+
+    .control-group label {
+      font-size: 13px;
+      font-weight: 600;
       text-transform: uppercase;
+      color: #558b2f;
       letter-spacing: 0.5px;
     }
- 
-    .card-text h3 {
-      font-size: 22px;
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: #2d3436;
-    }
- 
-    .card-text {
-      padding: 30px;
-    }
- 
-    .card-text p {
-      color: #555;
-      margin-bottom: 16px;
-      line-height: 1.7;
-      font-size: 14px;
-    }
- 
-    .card-tags {
+
+    .sort-buttons, .filter-buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
-      margin-top: 20px;
+      flex-wrap: wrap;
     }
- 
+
+    .sort-btn, .filter-btn {
+      padding: 8px 14px;
+      border: 1px solid #c8e6c9;
+      background: #fff;
+      color: #2d5016;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .sort-btn:hover, .filter-btn:hover {
+      border-color: #558b2f;
+      background: #f1f8f4;
+    }
+
+    .sort-btn.active, .filter-btn.active {
+      background: #558b2f;
+      color: #fff;
+      border-color: #558b2f;
+    }
+
+    .project-card {
+      background: #fff;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: #558b2f;
+      box-shadow: 0 8px 24px rgba(85, 139, 47, 0.15);
+    }
+
+    .project-card h3 {
+      font-size: 20px;
+      color: #2d3436;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    .project-summary {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-topics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
     .tag {
       display: inline-block;
-      background: #fce9f3;
-      color: #b8568a;
+      background: #f1f8f4;
+      color: #2d5016;
       padding: 6px 12px;
       border-radius: 4px;
       font-size: 12px;
       font-weight: 500;
     }
- 
-    .tag.accent {
-      background: #f5d5e8;
-      color: #a87ba8;
+
+    .read-more-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #558b2f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
- 
-    .tag.muted {
-      background: #f0e8ec;
-      color: #8a7a8a;
+
+    .read-more-btn:hover {
+      background: #2d5016;
+      transform: translateY(-2px);
     }
- 
+
     /* ---------- CV TAB ---------- */
     .cv-section {
       margin-bottom: 28px;
@@ -299,8 +344,8 @@
  
     .cv-section h4 {
       font-size: 16px;
-      color: #a87ba8;
-      margin-bottom: 4px;
+      color: #2d3436;
+      margin-bottom: 6px;
       font-weight: 600;
     }
  
@@ -315,6 +360,42 @@
       font-size: 14px;
       color: #555;
       line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .cv-section ul {
+      list-style: none;
+      margin: 12px 0;
+      padding-left: 0;
+    }
+
+    .cv-section li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .cv-section li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #558b2f;
+      font-weight: bold;
+    }
+
+    .cv-section-title {
+      font-size: 16px;
+      color: #2d5016;
+      margin-top: 28px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid #e8f5e9;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
  
     /* ---------- RESPONSIVE ---------- */
@@ -328,7 +409,7 @@
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 1px solid #f5d5e8;
+        border-bottom: 1px solid #c8e6c9;
         padding: 30px 20px;
       }
  
@@ -351,18 +432,6 @@
       .panel {
         padding: 24px;
       }
- 
-      .card-photo {
-        padding: 20px;
-      }
- 
-      .card-text {
-        padding: 20px;
-      }
- 
-      .card-text h3 {
-        font-size: 18px;
-      }
     }
  
     ::-webkit-scrollbar {
@@ -370,16 +439,16 @@
     }
  
     ::-webkit-scrollbar-track {
-      background: #faf9f7;
+      background: #f1f8f4;
     }
  
     ::-webkit-scrollbar-thumb {
-      background: #f5d5e8;
+      background: #c8e6c9;
       border-radius: 4px;
     }
  
     ::-webkit-scrollbar-thumb:hover {
-      background: #d084b0;
+      background: #558b2f;
     }
   </style>
 </head>
@@ -389,10 +458,10 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="photo">
-        <img src="IMG_1773.jpg" alt="Profile Photo">
+        <img src="img/IMG_1773.jpg" alt="Profile Photo">
       </div>
       <h1>Matawatee Suriyapanuwat</h1>
-      <p class="sidebar-tagline">Business Analyst<br>Python · C++ · SQL</p>
+      <p class="sidebar-tagline">Biomedical Engineer<br>FEA · CAD · Data Analysis</p>
  
       <div class="sidebar-section">
         <h3>Contact</h3>
@@ -419,7 +488,7 @@
           <ul class="nav-tabs">
             <li><button class="tab-button active" onclick="showTab('portfolio')">Projects</button></li>
             <li><button class="tab-button" onclick="showTab('about')">About</button></li>
-            <li><button class="tab-button" onclick="showTab('projects')">CV</button></li>
+            <li><button class="tab-button" onclick="showTab('cv')">CV</button></li>
           </ul>
         </div>
       </nav>
@@ -428,151 +497,175 @@
       <div class="content">
         <!-- PORTFOLIO TAB -->
         <div id="portfolio" class="tab-content active">
-          <div class="cards">
-            <!-- PROJECT 1 -->
-            <div class="card">
-              <div class="card-photo">
-                <div class="card-date">March 2024</div>
-                <div class="card-text" style="padding: 0;">
-                  <h3>Sales Data Analysis</h3>
-                </div>
-              </div>
-              <div class="card-text">
-                <p>
-                  Analyzed quarterly sales data across 5 regions to identify trends and opportunities.
-                  Created interactive dashboards in Tableau to track KPIs and revenue growth.
-                </p>
-                <p>
-                  <strong>Key findings:</strong> Discovered a 23% increase in sales in Q2, with the 
-                  best performance in the West region. Recommended targeted marketing strategies.
-                </p>
-                <div class="card-tags">
-                  <span class="tag accent">Tableau</span>
-                  <span class="tag">SQL</span>
-                  <span class="tag muted">Excel</span>
-                </div>
+          <div class="projects-header">
+            <h2 style="font-size: 24px; color: #2d3436; margin-bottom: 12px; font-weight: 600;">Projects & Research</h2>
+          </div>
+
+          <!-- CONTROLS -->
+          <div class="projects-controls">
+            <!-- SORT -->
+            <div class="control-group">
+              <label>Sort By</label>
+              <div class="sort-buttons">
+                <button class="sort-btn active" onclick="sortProjects('date-desc')">Newest</button>
+                <button class="sort-btn" onclick="sortProjects('date-asc')">Oldest</button>
+                <button class="sort-btn" onclick="sortProjects('alpha')">A → Z</button>
               </div>
             </div>
- 
-            <!-- PROJECT 2 -->
-            <div class="card">
-              <div class="card-photo">
-                <div class="card-date">February 2024</div>
-                <div class="card-text" style="padding: 0;">
-                  <h3>Customer Segmentation Study</h3>
-                </div>
-              </div>
-              <div class="card-text">
-                <p>
-                  Performed clustering analysis on customer data using Python to segment users 
-                  into distinct groups based on purchasing behavior and demographics.
-                </p>
-                <p>
-                  <strong>Outcome:</strong> Identified 4 customer segments with actionable insights. 
-                  Results enabled personalized marketing campaigns that increased retention by 18%.
-                </p>
-                <div class="card-tags">
-                  <span class="tag accent">Python</span>
-                  <span class="tag">Machine Learning</span>
-                  <span class="tag muted">Pandas</span>
-                </div>
+
+            <!-- FILTER -->
+            <div class="control-group">
+              <label>Filter By Topic</label>
+              <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+                <button class="filter-btn" onclick="filterProjects('LLM')">LLM</button>
+                <button class="filter-btn" onclick="filterProjects('Data Analytics')">Data Analytics</button>
+                <button class="filter-btn" onclick="filterProjects('Biomedical')">Biomedical</button>
+                <button class="filter-btn" onclick="filterProjects('Education')">Education Tech</button>
+                <button class="filter-btn" onclick="filterProjects('Healthcare')">Healthcare</button>
               </div>
             </div>
           </div>
+
+          <!-- PROJECTS LIST -->
+          <div id="projectsList"></div>
         </div>
  
         <!-- ABOUT ME TAB -->
         <div id="about" class="tab-content">
           <!-- Briefly About Me -->
           <div class="panel">
-            <h3 style="font-size: 20px; margin-bottom: 20px; color: #a87ba8; font-weight: 600;">Briefly About Me</h3>
-            <p>
-              Hi! I'm a data analyst passionate about transforming raw data into actionable insights that drive business impact. 
-              I specialize in SQL, Python, and Tableau, with a focus on business intelligence and strategic decision-making.
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #558b2f; font-weight: 600;">About Me</h3>
+            <p style="text-align: justify; line-height: 1.6; margin-bottom: 16px;">
+              My name is Nat, Matawatee Suriyapanuwat. I'm a data-driven engineer with a background in biomedical engineering and a passion for leveraging AI and machine learning to solve real-world healthcare challenges. I'm currently pursuing a Master's in Management Analytics at McGill University, where I'm learning to combine technical expertise with business strategy and data-driven decision-making. Throughout my journey, I've built diverse experience across the biomedical and AI landscape, from my early work in the Biomedical Data Lab during my bachelor's degree, to roles as an AI Research Assistant and an internship in R&D of Medical Instruments. Each opportunity has strengthened my ability to extract insights from complex data and translate them into actionable business and healthcare solutions.
             </p>
-            <p>
-              My career goal is to bridge the gap between data and strategy—helping organizations understand their data deeply 
-              and make informed decisions that create real value. I'm committed to staying at the forefront of analytics innovation 
-              and continuously expanding my skill set in emerging technologies and methodologies.
+            <p style="text-align: justify; line-height: 1.6;">
+              My technical toolkit spans machine learning, LLM applications, and data analysis across multiple modalities including numerical, textual, and visual data. I have a solid understanding of biomedical systems and business contexts. I understand not just how to build solutions, but why they matter from a business and product perspective. My thesis project is an LLM-integrated game designed to support deaf students' English language acquisition. This demonstrates my commitment to using cutting-edge AI not just as a technical solution, but as a tool for social impact and inclusive education. I'm driven by the intersection of technology, human-centered design, and business value. The most powerful innovations come from understanding the data, the people behind it, and the business need it solves.
             </p>
           </div>
 
           <!-- My Interests -->
           <div class="panel" style="margin-top: 28px;">
-            <h3 style="font-size: 20px; margin-bottom: 20px; color: #a87ba8; font-weight: 600;">My Interests</h3>
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #558b2f; font-weight: 600;">My Interests</h3>
             <p>
-              I'm deeply interested in how data and technology can create meaningful impact across different sectors. My focus areas include:
+              I'm deeply passionate about using AI and data to make a real difference in healthcare, education, and business. My focus areas include:
             </p>
             <ul style="list-style: none; margin: 16px 0; padding-left: 0;">
               <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Technology in Healthcare:</strong> Exploring how data analytics can improve patient outcomes and optimize healthcare operations
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Healthcare AI & Innovation:</strong> Applying machine learning and LLMs to solve clinical challenges, improve diagnostic tools, and develop patient-centered healthcare technology
               </li>
               <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Technology in Education:</strong> Using data to personalize learning experiences and improve educational outcomes
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Biomedical Data Analysis:</strong> Extracting insights from complex biomedical datasets by combining numerical analysis, medical imaging, and text-based clinical data to drive evidence-based solutions
               </li>
               <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>AI & Data Analytics:</strong> Understanding machine learning applications and how predictive models can solve real-world problems
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Language Models for Social Good:</strong> Leveraging LLMs and AI to address accessibility gaps and create educational tools for underrepresented communities, particularly in language learning and inclusive technology
               </li>
               <li style="padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Business Impact Through Data:</strong> Demonstrating how data-driven insights transform business strategy and create competitive advantages
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Data-Driven Product Development:</strong> Using analytics to bridge the gap between engineering innovation and real-world healthcare needs, ensuring solutions are both technically sound and practically valuable
               </li>
             </ul>
           </div>
 
           <!-- My Hobbies -->
           <div class="panel" style="margin-top: 28px;">
-            <h3 style="font-size: 20px; margin-bottom: 20px; color: #a87ba8; font-weight: 600;">My Hobbies & Passions</h3>
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #558b2f; font-weight: 600;">My Hobbies & Passions</h3>
             <p>
-              Outside of work, I'm a lifelong learner who loves to explore the world through different lenses. My hobbies reflect my curiosity about diverse cultures and experiences:
+              Outside of engineering, I'm a lifelong learner who loves exploring the world through different perspectives:
             </p>
             <ul style="list-style: none; margin: 16px 0; padding-left: 0;">
               <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Café Hopping:</strong> Discovering unique coffee cultures and local cafés—whether in my city or while traveling
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Café Culture & Coffee Exploration:</strong> Discovering unique coffee cultures and local cafés around the world
               </li>
               <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Travel & Cultural Exploration:</strong> Visiting new countries to immerse myself in different cultures, cuisines, and perspectives
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Travel & Cultural Immersion:</strong> Exploring different countries to understand diverse cultures, cuisines, and ways of life
               </li>
               <li style="padding-left: 20px; position: relative;">
-                <span style="position: absolute; left: 0; color: #a87ba8;">•</span>
-                <strong>Reading:</strong> Exploring everything from data analytics books to cultural narratives and travel memoirs
+                <span style="position: absolute; left: 0; color: #558b2f;">•</span>
+                <strong>Reading:</strong> Exploring everything from engineering and science to cultural narratives and travel literature
               </li>
             </ul>
             <p style="margin-top: 16px;">
-              These hobbies fuel my creativity and remind me that understanding diverse perspectives is just as important as understanding data.
+              These interests remind me that understanding diverse perspectives—both technical and human—is essential to creating solutions that truly matter.
             </p>
           </div>
         </div>
  
-        <!-- CV/PROJECTS TAB -->
-        <div id="projects" class="tab-content">
+        <!-- CV TAB -->
+        <div id="cv" class="tab-content">
           <div class="panel">
-            <h3 style="font-size: 20px; margin-bottom: 28px; color: #a87ba8; font-weight: 600;">Experience & Education</h3>
+            <h3 style="font-size: 20px; margin-bottom: 28px; color: #558b2f; font-weight: 600;">Education & Experience</h3>
  
+            <!-- EDUCATION SECTION -->
+            <div class="cv-section-title">Education</div>
+
             <div class="cv-section">
-              <h4>Data Analyst</h4>
-              <p class="meta">Company Name · Jan 2023 – Present</p>
-              <p>Led data analysis projects for sales and marketing teams. Created dashboards in Tableau 
-              that track KPIs. Performed SQL queries to extract and transform data from databases.</p>
+              <h4>Bachelor of Biomedical Engineering (Expected 2025)</h4>
+              <p class="meta">Mahidol University · Bangkok, Thailand | Aug 2022 – Present</p>
+              <p><strong>GPA: 3.88/4.0 (First Class Honours)</strong></p>
+              <p><strong>Relevant Coursework:</strong> Mathematics, Biostatistics, Computer Programming, Computational Methods, Business Entrepreneurship, Business for Medical Innovation, Human and Development</p>
             </div>
- 
+
             <div class="cv-section">
-              <h4>Junior Analyst</h4>
-              <p class="meta">Previous Company · Jun 2022 – Dec 2022</p>
-              <p>Supported analytics initiatives by creating reports and visualizations. Collaborated with 
-              cross-functional teams to define data requirements and solutions.</p>
+              <h4>Advanced Subsidiary (AS) Level</h4>
+              <p class="meta">Harrow International School · Bangkok, Thailand | Aug 2021 – Jun 2022</p>
+              <p><strong>Subjects:</strong> Mathematics, Further Mathematics, Physics, Biology</p>
             </div>
- 
+
             <div class="cv-section">
-              <h4>Bachelor of Science in Business Analytics</h4>
-              <p class="meta">University Name · Graduated May 2022</p>
-              <p>Relevant coursework: Data Analysis, Business Intelligence, Statistical Modeling, 
-              Database Management. GPA: 3.8/4.0</p>
+              <h4>Science-Mathematics and Computer Program</h4>
+              <p class="meta">Wattana Wittaya Academy · Bangkok, Thailand | May 2019 – Jul 2021</p>
+              <p><strong>GPA: 3.93/4.0 | Merit-based Scholarship Recipient</strong></p>
+            </div>
+
+            <!-- WORK EXPERIENCE SECTION -->
+            <div class="cv-section-title">Work Experience</div>
+
+            <div class="cv-section">
+              <h4>Summer Internship, Business Transformation Department</h4>
+              <p class="meta">IHI Scube Co., Ltd. (Japan) · Bangkok, Thailand | Jun 2025 – Jul 2025</p>
+              <p><em>Japanese IT services company providing consulting, system engineering, and solutions in information and communication technology, control electronics, and mechatronics</em></p>
+              <ul>
+                <li>Evaluated Devin.ai's potential in workflow optimisation and data automation, achieving 20% faster project cycle times through prompt engineering and AI integration</li>
+                <li>Authored and presented best-practice reports on AI adoption to senior executives, shaping the company's digital transformation roadmap</li>
+                <li>Completed advanced training in Tableau analytics and fluid-structure simulation, strengthening quantitative and technical proficiency</li>
+              </ul>
+            </div>
+
+            <div class="cv-section">
+              <h4>Summer Internship, Research and Development Department</h4>
+              <p class="meta">Honest Medical Co., Ltd. (Taiwan) · Bangkok, Thailand | Jun 2024 – Aug 2024</p>
+              <p><em>Biomedical device company specialising in research, development, and production of medical simulators and surgical training equipment for healthcare education and clinical innovation</em></p>
+              <ul>
+                <li>Contributed to product design and testing of biomedical simulators (ERCP, bi-forceps, laryngoscope), reducing clinician training time</li>
+                <li>Represented the company at TAGE 2024, promoting safe and skill-based surgical training tools to 50+ healthcare professionals</li>
+                <li>Supported cross-border collaboration between Thailand and Taiwan, enhancing product localisation and market-entry strategy</li>
+              </ul>
+            </div>
+
+            <div class="cv-section">
+              <h4>Marketing & Operations Coordinator (Family Business)</h4>
+              <p class="meta">Chantara Relax (Massage, Nail & Wax Shop) · Bangkok, Thailand | Aug 2023 – Present</p>
+              <ul>
+                <li>Launched loyalty and prepaid programmes (e.g., Buy 10 Get 1 Free, 2,000 THB Course valued at 2,200 THB), increasing customer retention to 70% among walk-in clients</li>
+                <li>Directed digital marketing campaigns via Facebook, Instagram, and Google Maps, driving a 50% rise in new nail service customers from online sources</li>
+                <li>Analysed sales and client data to fine-tune pricing and promotions, achieving 20% revenue growth quarter-over-quarter</li>
+              </ul>
+            </div>
+
+            <div class="cv-section">
+              <h4>Operations & Marketing Manager (Family Business)</h4>
+              <p class="meta">Midori Shokudo (Japanese Restaurant) · Bangkok, Thailand | Aug 2022 – Present</p>
+              <ul>
+                <li>Managed seasonal supply chain operations, optimising fish procurement and vendor contracts to cut raw material costs by 15% while maintaining high quality</li>
+                <li>Designed and executed promotional campaigns (e.g., Autumn Seafood Week, Premium Set Menu), increasing customer turnout by 50% growth over 1-year period</li>
+                <li>Created the restaurant's brand identity, including logo, visuals, and in-store layout, enhancing brand recognition and repeat patronage</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -581,6 +674,88 @@
   </div>
  
   <script>
+    // Projects Data - Links to separate project pages
+    const projectsData = [
+      {
+        id: 1,
+        title: "Integration of LLM and Game for Deaf Students to Improve Linguistic Development for English as Third Language",
+        date: "2024-03",
+        dateDisplay: "May 2026",
+        topics: ["LLM", "Education", "Social Impact"],
+        summary: "Developed an innovative educational application integrating Large Language Models with gamification to support Thai deaf students in English language acquisition.",
+        link: "projects/project1.html"
+      },
+      {
+        id: 2,
+        title: "Business Pitching for ECMO",
+        date: "2024-02",
+        dateDisplay: "August 2025",
+        topics: ["Data Analytics", "Healthcare", "Business Strategy"],
+        summary: "Comprehensive business analysis and pitch development for ECMO (Extracorporeal Membrane Oxygenation) technology applications in clinical settings.",
+        link: "projects/project2.html"
+      },
+      {
+        id: 3,
+        title: "Biomechanics Simulation of Orthodontic Force Created by Standard and Low-Quality Wire using Ansys FEA",
+        date: "2024-01",
+        dateDisplay: "April 2024",
+        topics: ["Biomedical", "Healthcare", "Simulation"],
+        summary: "Advanced finite element analysis study examining biomechanical forces in orthodontic treatment comparing standard and low-quality orthodontic wires.",
+        link: "orthodontic-project-updated.html"
+      }
+    ];
+
+    let currentSort = 'date-desc';
+    let currentFilter = 'all';
+
+    function renderProjects() {
+      let filtered = projectsData;
+      
+      // Apply filter
+      if (currentFilter !== 'all') {
+        filtered = filtered.filter(p => p.topics.includes(currentFilter));
+      }
+
+      // Apply sort
+      filtered.sort((a, b) => {
+        if (currentSort === 'date-desc') {
+          return new Date(b.date) - new Date(a.date);
+        } else if (currentSort === 'date-asc') {
+          return new Date(a.date) - new Date(b.date);
+        } else if (currentSort === 'alpha') {
+          return a.title.localeCompare(b.title);
+        }
+      });
+
+      // Render
+      const projectsList = document.getElementById('projectsList');
+      projectsList.innerHTML = filtered.map(project => `
+        <div class="project-card">
+          <h3>${project.title}</h3>
+          <div class="project-meta">${project.dateDisplay}</div>
+          <div class="project-summary">${project.summary}</div>
+          <div class="project-topics">
+            ${project.topics.map(topic => `<span class="tag">${topic}</span>`).join('')}
+          </div>
+          <a href="${project.link}" class="read-more-btn">Read More →</a>
+        </div>
+      `).join('');
+    }
+
+    function sortProjects(type) {
+      currentSort = type;
+      document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderProjects();
+    }
+
+    function filterProjects(topic) {
+      currentFilter = topic;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderProjects();
+    }
+
     function showTab(tabName) {
       // Hide all tabs
       document.querySelectorAll(".tab-content").forEach(function (el) {
@@ -593,7 +768,15 @@
       // Show selected tab
       document.getElementById(tabName).classList.add("active");
       event.target.classList.add("active");
+      
+      // Render projects when portfolio tab is shown
+      if (tabName === 'portfolio') {
+        setTimeout(() => renderProjects(), 0);
+      }
     }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', renderProjects);
   </script>
 </body>
 </html>

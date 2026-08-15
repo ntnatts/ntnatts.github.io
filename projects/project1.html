@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM and Game for Deaf Students - Matawatee Suriyapanuwat</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d3436;
+      background: #faf9f7;
+      line-height: 1.6;
+    }
+ 
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+      gap: 0;
+    }
+ 
+    /* ============ SIDEBAR ============ */
+    .sidebar {
+      width: 280px;
+      background: #e8f5e9;
+      padding: 40px 30px;
+      border-right: 1px solid #c8e6c9;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      color: #2d3436;
+    }
+ 
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2d3436;
+      font-size: 14px;
+      margin: 0 auto 24px;
+      border: 2px solid #558b2f;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .sidebar h1 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 6px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2d3436;
+    }
+ 
+    .sidebar-tagline {
+      font-size: 13px;
+      color: #558b2f;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+ 
+    .sidebar-section {
+      margin-bottom: 32px;
+    }
+ 
+    .sidebar-section h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #558b2f;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+ 
+    .social-links {
+      list-style: none;
+    }
+ 
+    .social-links li {
+      margin-bottom: 10px;
+    }
+ 
+    .social-links a {
+      color: #2d3436;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 6px 0;
+    }
+ 
+    .social-links a:hover {
+      color: #558b2f;
+      transform: translateX(4px);
+    }
+ 
+    /* ============ MAIN CONTENT ============ */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    /* ---------- TOP NAVIGATION ---------- */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+ 
+    .navbar-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+ 
+    .navbar h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d5016;
+      letter-spacing: -0.5px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #558b2f;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+ 
+    /* ---------- CONTENT AREA ---------- */
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 50px 40px;
+    }
+
+    .project-header {
+      margin-bottom: 40px;
+    }
+
+    .project-title {
+      font-size: 32px;
+      color: #2d3436;
+      margin-bottom: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .project-meta {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .project-topics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f1f8f4;
+      color: #2d5016;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .project-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+
+    .content-section {
+      margin-bottom: 32px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-section h3 {
+      font-size: 20px;
+      color: #558b2f;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .content-section p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .content-section ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .content-section li {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .project-figure {
+      background: #f9f9f9;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .project-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .figure-caption {
+      font-size: 13px;
+      color: #888;
+      margin-top: 12px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .research-highlight {
+      background: #f1f8f4;
+      border-left: 4px solid #558b2f;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+
+    .research-highlight strong {
+      color: #558b2f;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+ 
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #c8e6c9;
+        padding: 30px 20px;
+      }
+ 
+      .navbar-content {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+      }
+ 
+      .content {
+        padding: 30px 20px;
+      }
+
+      .project-title {
+        font-size: 24px;
+      }
+
+      .project-content {
+        padding: 24px;
+      }
+    }
+ 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+ 
+    ::-webkit-scrollbar-track {
+      background: #f1f8f4;
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+      background: #c8e6c9;
+      border-radius: 4px;
+    }
+ 
+    ::-webkit-scrollbar-thumb:hover {
+      background: #558b2f;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div class="wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="photo">
+        <img src="../img/IMG_1773.jpg" alt="Profile Photo">
+      </div>
+      <h1>Matawatee Suriyapanuwat</h1>
+      <p class="sidebar-tagline">Business Analyst<br>Python · SQL · Tableau</p>
+ 
+      <div class="sidebar-section">
+        <h3>Contact</h3>
+        <ul class="social-links">
+          <li><a href="mailto:nat.nnts@gmail.com">Email</a></li>
+        </ul>
+      </div>
+ 
+      <div class="sidebar-section">
+        <h3>Social</h3>
+        <ul class="social-links">
+          <li><a href="https://github.com/ntnatts/ntnatts" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </aside>
+ 
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <!-- TOP NAVIGATION -->
+      <nav class="navbar">
+        <div class="navbar-content">
+          <a href="../index.html" class="back-link">← Back to Projects</a>
+          <h2>Portfolio</h2>
+        </div>
+      </nav>
+ 
+      <!-- CONTENT -->
+      <div class="content">
+        <div class="project-header">
+          <h1 class="project-title">Improving English Literacy in Thai Deaf Students: An LLM-Integrated Game with AI Feedback</h1>
+          <div class="project-meta">Published in IEEE Conference Proceedings, 2026</div>
+          <div class="project-topics">
+            <span class="tag">LLM</span>
+            <span class="tag">Education</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">Game-Based Learning</span>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="content-section">
+            <h3>Abstract</h3>
+            <p>Deaf and Hard-of-Hearing (DHH) students often face significant challenges in acquiring English vocabulary and grammar due to limited access to auditory information and reduced exposure to phonological features. This study presents a game-based English learning system specifically designed for Thai DHH students, integrating Large Language Models (LLMs) for adaptive AI feedback, Thai language translation, and Thai Sign Language (TSL) support.</p>
+            <p>The system was evaluated through a controlled experimental design with 62 secondary students from the Setsatian School for the Deaf. While the Intention-to-Treat (ITT) analysis showed no significant overall effect, a Per-Protocol (PP) analysis targeting engaged participants (≥70% attendance) revealed a statistically significant and large intervention effect (p = .022, η²p = .549). User satisfaction surveys demonstrated improved engagement and satisfaction with game design and visual elements.</p>
+          </div>
+
+          <div class="content-section">
+            <h3>Problem Statement</h3>
+            <p>In Thailand, deaf education adopts a bilingual-bicultural approach where Thai Sign Language (TSL) is the primary medium, while written Thai and English are introduced as second and third languages. Despite structured instruction, English proficiency among DHH students remains significantly below expected levels:</p>
+            <ul>
+              <li>Grade 9-12 DHH students often demonstrate English competency equivalent to Grade 6 hearing students</li>
+              <li>Limited accessible learning materials and sign-language-integrated instruction</li>
+              <li>Traditional teaching methods (flashcards, picture books) lack scalability and require heavy teacher facilitation</li>
+              <li>Absence of standardized sign-language-supported educational technology tools</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h3>System Architecture</h3>
+            
+            <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/overall.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: System Overview & Game Interface</p>
+            </div>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">Game-Based Learning Module (GBL)</h4>
+            <p>The system integrates three distinct game modalities aligned with sequential cognitive learning stages:</p>
+            <ul>
+              <li><strong>Word Choice:</strong> Students fill in sentence blanks by selecting correct lexical options with visual prompts. This familiar assessment structure minimizes cognitive load and test-taking anxiety.</li>
+              <li><strong>Jumble Game:</strong> Students arrange scrambled linguistic elements to construct accurate words or sentences. The vocabulary component focuses on character sequencing, while sentences require syntactical organization.</li>
+              <li><strong>Matching Game:</strong> Students connect sentences to corresponding images or establish links between visuals based on functional relationships, requiring application of cumulative vocabulary and syntax knowledge.</li>
+            </ul>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">Level-Based Progression</h4>
+            <p>Each modality is partitioned into five operational levels designed to facilitate iterative learning:</p>
+            <ul>
+              <li><strong>Levels 1 & 3:</strong> Initial vocabulary acquisition and introduction of new content</li>
+              <li><strong>Levels 2 & 4:</strong> Reinforcement intervals for review and memory retention optimization</li>
+              <li><strong>Level 5:</strong> Synthesis and application of cumulative knowledge through complex grammar-focused tasks</li>
+            </ul>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">AI-Assisted Learning Module</h4>
+            <ul>
+              <li><strong>LLM Feedback:</strong> Gemini 2.5 Flash generates adaptive, accessible feedback with simplified language and cognitive accessibility</li>
+              <li><strong>Thai Sign Language (TSL) Support:</strong> 3D pose estimation processes TSL videos to animate sign language explanations</li>
+              <li><strong>Personalization:</strong> Retrieval-Augmented Generation (RAG) framework adapts content based on individual performance and learning history</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h3>Curriculum Design</h3>
+            <p>Learning content is aligned with the Thai Basic Education Core Curriculum at the Grade 6 level (CEFR A1 proficiency), addressing four targeted language domains:</p>
+            <ol style="margin-left: 20px;">
+              <li><strong>Vocabulary Acquisition:</strong> Core lexical items essential for basic communication</li>
+              <li><strong>Foundational Morphosyntax:</strong> Singular/plural inflection, articles, prepositions of place</li>
+              <li><strong>Core Tense System:</strong> Present simple, present continuous, past simple, and future simple</li>
+              <li><strong>Visual-Based Learning:</strong> All content integrated with visual prompts to support visual-first communication style of DHH learners</li>
+            </ol>
+          </div>
+
+          <div class="research-highlight">
+            <strong>Key Design Principles:</strong> The system employs user-centered design (UCD) with vivid colors, pixel-style graphics, minimal text, and intuitive icons to enhance visual engagement. Gameplay sessions are limited to 20 minutes to accommodate attention spans and minimize cognitive fatigue.
+          </div>
+
+          <div class="content-section">
+            <h3>Evaluation Methodology</h3>
+            <ul>
+              <li><strong>Participants:</strong> 62 secondary students (Grades 9-12) from Setsatian School for the Deaf in Thailand</li>
+              <li><strong>Study Design:</strong> Randomized controlled trial with pre-test, intervention (30 sessions × 20 minutes), and post-test</li>
+              <li><strong>Control Group:</strong> 31 students using existing English learning game for deaf students</li>
+              <li><strong>Intervention Group:</strong> 31 students using the proposed LLM-integrated system with Gemini 2.5 Flash backend</li>
+              <li><strong>Data Collection:</strong> Automated in-game logging (response correctness, assistive feature usage, response duration) + post-intervention user satisfaction survey</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h3>Evaluation Results</h3>
+            
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">LLM Model Selection</h4>
+            <p>Using an LLM-as-a-judge framework (Llama 3), we compared Gemini 2.5 Flash vs GPT-4o Mini across accuracy, tone, and clarity (1-5 scale). <strong>Gemini 2.5 Flash outperformed with a mean score of 4.08 vs 3.68,</strong> demonstrating superior pedagogical tone and precision in generating accessible language hints.</p>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">Post-Test Score Analysis</h4>
+            <p><strong>Intention-to-Treat (ITT) Analysis (n = 50):</strong> No statistically significant intervention effect (p = .639, η²p = .005). Baseline pre-test scores were the strongest predictor of performance (p < .001, η²p = .272), indicating prior knowledge masked intervention impact.</p>
+            <p><strong>Per-Protocol (PP) Analysis (n = 12, ≥70% attendance):</strong> <strong>Statistically significant and large intervention effect (p = .022, η²p = .549).</strong> Adjusted post-test means showed intervention group scored significantly higher (M_adj = 9.47) vs control (M_adj = 5.65), demonstrating effectiveness for engaged participants.</p>
+
+            <div class="research-highlight">
+              <strong>Critical Finding:</strong> While prior knowledge masked the intervention's impact across the full sample, the LLM-integrated system demonstrated substantial learning gains for participants who consistently engaged with the platform (≥70% attendance).
+            </div>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">Learning Outcome Predictors</h4>
+            <p>Linear mixed-effects model analysis identified the following predictors of attempt frequency:</p>
+            <ul>
+              <li><strong>Task Difficulty:</strong> Students required significantly fewer attempts for "Easy" questions (β = -.794, p < .001) — primary predictor</li>
+              <li><strong>Translation Feature:</strong> Showed marginal trend (β = .319, p = .074)</li>
+              <li><strong>TSL Hint Usage:</strong> Not a significant predictor of attempt frequency (p > .05)</li>
+              <li><strong>Individual Differences:</strong> Approximately 21.6% of variance stemmed from individual student characteristics and learning histories</li>
+            </ul>
+            <p><strong>Key Observation:</strong> Students preferred rapid trial-and-error retries over processing assistive feedback, suggesting LLM hints functioned primarily as an engagement-sustaining safety net rather than a direct error-reduction mechanism. This finding indicates a need to design feedback strategies that counteract the "rapid-retry" behavior.</p>
+
+            <h4 style="font-size: 16px; color: #2d3436; margin-top: 18px; margin-bottom: 10px; font-weight: 500;">User Experience & Satisfaction</h4>
+            <p>Post-intervention survey (Likert scale 1-5) demonstrated intervention group outperformed control across all dimensions:</p>
+            <ul>
+              <li>Ease of Understanding: 3.88 vs 3.48</li>
+              <li>Engagement: 3.76 vs 3.46</li>
+              <li>Game Content: 3.94 vs 3.45</li>
+              <li>Graphic Style: 3.85 vs 3.52</li>
+              <li>LLM Assistive Feedback: 3.94</li>
+              <li>Reward System: 4.06</li>
+            </ul>
+            <p>The largest satisfaction gains appeared in game content and engagement dimensions, indicating effective gamification design and strong student preference for the visual and interactive elements.</p>
+          </div>
+          <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/result_deaf.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 2: Statistical Analysis</p>
+            </div>
+
+          <div class="content-section">
+            <h3>Key Insights & Implications</h3>
+            <ul>
+              <li><strong>Accessibility-First Design Works:</strong> Visual-first design with TSL support is critical for DHH learners' engagement and comprehension</li>
+              <li><strong>LLM-Powered Learning Shows Promise:</strong> When students are engaged, adaptive LLM-based feedback significantly improves learning outcomes</li>
+              <li><strong>Engagement is the Prerequisite:</strong> System efficacy depends on consistent student participation; attendance/engagement was the strongest predictor of success</li>
+              <li><strong>Game Mechanics Matter:</strong> Students rated game design, graphics, and reward systems highly, confirming well-designed gaming elements sustain motivation</li>
+              <li><strong>LLM Potential vs. Student Behavior Mismatch:</strong> Students' preference for rapid retries suggests optimization opportunities for feedback delivery mechanisms</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h3>Limitations & Future Directions</h3>
+            <p><strong>Study Limitations:</strong></p>
+            <ul>
+              <li>Small sample size, particularly for PP analysis (n = 12) due to attrition</li>
+              <li>High attrition rate in voluntary after-school setting (23% retention; only 50% completed full intervention)</li>
+              <li>TSL and translation features utilized minimally by students despite availability</li>
+              <li>Limited long-term follow-up data on knowledge retention and transfer</li>
+              <li>Single-site study with specific school population; generalizability limited</li>
+            </ul>
+            <p><strong>Future Research & Development Directions:</strong></p>
+            <ul>
+              <li>Design enhanced engagement mechanisms (e.g., social features, instructor integration) to improve attendance rates</li>
+              <li>Expand TSL library for fuller sign-language coverage and optimize 3D sign rendering</li>
+              <li>Develop feedback strategies that counteract rapid-retry behavior to maximize assistive hint effectiveness</li>
+              <li>Conduct larger-scale, multi-site studies to validate long-term learning outcomes and generalize findings</li>
+              <li>Expand platform to support additional languages and DHH populations in different linguistic contexts</li>
+              <li>Explore partnerships with deaf schools and educational institutions for broader implementation and adoption</li>
+              <li>Investigate integration of teacher dashboards for classroom-integrated deployment</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h3>Personal Reflection</h3>
+            <p>This research project profoundly reinforced my commitment to leveraging emerging technologies responsibly to address real-world educational challenges. The work demonstrated that LLMs, when thoughtfully integrated with game-based learning principles and accessibility-first design, can create meaningful pathways to language acquisition for underserved populations. A critical learning—that technology efficacy depends not just on the innovation itself, but on sustained user engagement and protocol adherence—applies broadly to educational technology design and implementation. This project exemplifies why accessibility-first design and culturally-sensitive implementation are prerequisites, not afterthoughts, in developing inclusive educational systems that serve all learners equitably.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

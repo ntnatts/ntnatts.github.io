@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BreathMo ECMO - Matawatee Suriyapanuwat</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d3436;
+      background: #faf9f7;
+      line-height: 1.6;
+    }
+ 
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+      gap: 0;
+    }
+ 
+    .sidebar {
+      width: 280px;
+      background: #e8f5e9;
+      padding: 40px 30px;
+      border-right: 1px solid #c8e6c9;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      color: #2d3436;
+    }
+ 
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2d3436;
+      font-size: 14px;
+      margin: 0 auto 24px;
+      border: 2px solid #558b2f;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .sidebar h1 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 6px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2d3436;
+    }
+ 
+    .sidebar-tagline {
+      font-size: 13px;
+      color: #558b2f;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+ 
+    .sidebar-section {
+      margin-bottom: 32px;
+    }
+ 
+    .sidebar-section h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #558b2f;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+ 
+    .social-links {
+      list-style: none;
+    }
+ 
+    .social-links li {
+      margin-bottom: 10px;
+    }
+ 
+    .social-links a {
+      color: #2d3436;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 6px 0;
+    }
+ 
+    .social-links a:hover {
+      color: #558b2f;
+      transform: translateX(4px);
+    }
+ 
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+ 
+    .navbar-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+ 
+    .navbar h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d5016;
+      letter-spacing: -0.5px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #558b2f;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+ 
+    .content {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 50px 40px;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: #558b2f;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    h3:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f1f8f4;
+      color: #2d5016;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #888;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+ 
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #c8e6c9;
+        padding: 30px 20px;
+      }
+ 
+      .navbar-content {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+      }
+ 
+      .content {
+        padding: 30px 20px;
+      }
+    }
+ 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+ 
+    ::-webkit-scrollbar-track {
+      background: #f1f8f4;
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+      background: #c8e6c9;
+      border-radius: 4px;
+    }
+ 
+    ::-webkit-scrollbar-thumb:hover {
+      background: #558b2f;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div class="wrapper">
+    <aside class="sidebar">
+      <div class="photo">
+        <img src="../img/IMG_1773.jpg" alt="Profile Photo">
+      </div>
+      <h1>Matawatee Suriyapanuwat</h1>
+    
+      <p class="sidebar-tagline">Business Analyst<br>Python · SQL · Tableau</p>
+ 
+      <div class="sidebar-section">
+        <h3>Contact</h3>
+        <ul class="social-links">
+          <li><a href="mailto:nat.nnts@gmail.com">Email</a></li>
+        </ul>
+      </div>
+ 
+      <div class="sidebar-section">
+        <h3>Social</h3>
+        <ul class="social-links">
+          <li><a href="https://github.com/ntnatts/ntnatts" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/matawatee-suriyapanuwat-4a107515a" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </aside>
+ 
+    <div class="main">
+      <nav class="navbar">
+        <div class="navbar-content">
+          <a href="../index.html" class="back-link">← Back to Projects</a>
+          <h2>Portfolio</h2>
+        </div>
+      </nav>
+ 
+      <div class="content">
+        <h1 style="font-size: 32px; color: #2d3436; margin-bottom: 6px;">BreathMo® ECMO: Market Entry Strategy</h1>
+        <p class="meta">Business Pitch | February 2024</p>
+        <div class="tags">
+          <span class="tag">Data Analytics</span>
+          <span class="tag">Healthcare Technology</span>
+          <span class="tag">Business Strategy</span>
+        </div>
+
+        <h3>Problem</h3>
+        <p>Advanced ECMO (heart-lung support) technology is not widely accessible in Thailand. Existing imported systems are expensive with no local support. VADDEE needed to validate market opportunity and develop strategy to distribute BreathMo® ECMO to Thai hospitals with growing critical care needs.</p>
+
+        <h3>Objective</h3>
+        <ul>
+          <li>Validate market demand for ECMO in Thailand</li>
+          <li>Analyze competitive landscape and positioning</li>
+          <li>Identify and segment target hospitals</li>
+          <li>Design pricing and packaging strategy</li>
+          <li>Project 4-year financial returns</li>
+          <li>Create executable sales roadmap</li>
+        </ul>
+
+        <h3>Scope</h3>
+        <ul>
+          <li>Market: Thailand (Bangkok entry → 4 regions)</li>
+          <li>Customers: Secondary & teaching hospitals with critical care</li>
+          <li>Product: BreathMo® ECMO system</li>
+          <li>Timeline: 4-year financial projection</li>
+        </ul>
+
+        <h3>Methods</h3>
+        <ul>
+          <li><strong>Market Research:</strong> TAM-SAM-SOM sizing using hospital data, case counts, demand forecasts</li>
+          
+          <li><strong>Competitive Analysis:</strong> Feature-price comparison of Getinge, Eurosets, Abbott systems</li>
+          
+          <li><strong>Value Preposition Analysis:</strong> Analyse why our product is unique and valuable to the target market</li>
+
+          <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/value.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 1: Value Proposition Diagram</p>
+          </div>
+
+          <li><strong>Stakeholder Interviews:</strong> Hospital leadership, ICU directors, procurement teams</li>
+          
+          <li><strong>Financial Modeling:</strong> 4-year revenue, costs, ROI projections with sensitivity analysis</li>
+          
+          <li><strong>Segmentation Strategy:</strong> Tier-1 (Bangkok) → Tier-2 (Regional) phased rollout</li>
+        
+          <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/teir1.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 2: Teir 1 Hospitals (Bangkok)</p>
+          </div>
+          <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/teir2.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 3: Teir 2 Hospitals (Regional)</p>
+          </div>
+        </ul>
+
+        <h3>Results</h3>
+        <ul>
+          <li><strong>Market Size:</strong> TAM ฿230M → Target (SOM) ฿18M Year 1</li>
+          <li><strong>Demand:</strong> 300-500 ECMO cases/year, 10-30% annual growth</li>
+          <li><strong>Customers:</strong> 20+ hospitals identified (Bangkok + 4 regions)</li>
+          <li><strong>Competitive Win:</strong> MagLev technology superior to Getinge & Eurosets</li>
+          <li><strong>Year 1 Revenue:</strong> ฿4.1M | Year 4: ฿28.1M | Total 4-Year: ฿14.3M</li>
+          <li><strong>Financial Returns:</strong> <strong>52.81% IRR</strong> | ฿7.3M NPV | ฿9.8M Year 4 net income | Breakeven Year 3</li>
+          <div style="margin: 24px 0; text-align: center;">
+              <img src="../img/breakeven.png" alt="Description" style="max-width: 100%; border-radius: 6px;">
+              <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">Figure 4: Break-Even Analysis</p>
+          </div>
+          <li><strong>Strategy:</strong> Direct B2B sales via hospitals, conferences, campaigns, outreach</li>
+        </ul>
+
+        <h3>What I Learned</h3>
+        <ul>
+          <li>Market sizing (TAM-SAM-SOM) is the foundation—assumptions compound into projections</li>
+          <li>Competitive differentiation must solve real customer problems (biocompatibility, portability, cost)</li>
+          <li>Phased geographic expansion (Tier-1 → Tier-2) manages risk and builds capability</li>
+          <li>Recurring revenue models (warranties, service) improve unit economics and customer lifetime value</li>
+          <li>Healthcare sales require simultaneous buy-in from clinicians, administrators, and procurement</li>
+          <li>Strong financial discipline (realistic costs, margin protection) is what drives attractive ROI</li>
+          <li>Data-backed arguments (specific case counts, named hospitals, growth rates) build investor confidence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
