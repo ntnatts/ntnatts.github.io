@@ -1,4 +1,4 @@
-# Hey there! 👋 I'm Nat (Natawatee Suriyapanuwat)
+# Hi! 👋🏻 I'm Nat (Matawatee Suriyapanuwat)
 
 **Data-Driven Engineer | AI & Healthcare Innovator | Biomedical Engineering Background**
 
